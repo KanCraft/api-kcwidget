@@ -4,12 +4,13 @@ python
 
 # Set Up
 
-### install python 2.6.6
+### install python 2.6.6 :pensive:
 ```
 sudo apt-get install python2.6
 ```
 
 ### OPTIONAL : install pyenv
+http://qiita.com/la_luna_azul/items/3f64016feaad1722805c
 ```
 cd ~
 git clone git://github.com/yyuu/pyenv.git .pyenv
@@ -36,6 +37,11 @@ pip install pyocr
 ### install Flask
 ```
 pip install Flask
+```
+### prepare conf.py
+```python
+host = 'myhost.com'
+port = 9999
 ```
 ### Start Server
 ```
