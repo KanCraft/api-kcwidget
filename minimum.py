@@ -7,18 +7,14 @@
 # --- modules
 from flask import Flask
 from flask import request
+from flask import make_response
 import urllib
+import json
 
 # --- my modules
 import conf
 import ocr
-
-def parsePostData(datastr):
-  res = {}
-  for kv in datastr.split('&'):
-    (k,v) = kv.split('=')
-    res[k] = v
-  return res
+import util
 
 app = Flask(__name__)
 
@@ -31,17 +27,19 @@ def upload_file():
 
   if request.method != 'POST':
     return 'Method must be "POST"'
-
+ 
   if request.data is not None:
-    params = parsePostData(request.data)
-
+    params = util.parsePostData(request.data)
+ 
   data    = urllib.unquote(params['imgBin'])
   binary  = data.replace('data:image/png;base64,','')
-
+ 
   txt = ocr.from_binary(binary)
-
+ 
   if txt:
-    return txt
+    body = json.dumps({'result' : txt })
+    resp = make_response(body, 200)
+    return resp
 
   return "Saved?"
 
