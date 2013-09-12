@@ -16,6 +16,8 @@ import conf
 import ocr
 import util
 
+from handler import Handler
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -37,8 +39,10 @@ def upload_file():
   txt = ocr.from_binary(binary)
  
   if txt:
-    body = json.dumps({'result' : txt })
-    resp = make_response(body, 200)
+
+    (body, status) = Handler(request).handle()
+
+    resp = make_response(body, status)
     return resp
 
   return "Saved?"
