@@ -1,6 +1,3 @@
-# TODO : Security
-# TODO : Content-Type : application/json
-
 # Python Version 2.6.6
 
 # --- modules
