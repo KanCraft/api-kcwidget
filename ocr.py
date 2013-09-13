@@ -15,6 +15,14 @@ def from_binary(binary):
   decoded = base64.b64decode(binary)
   img =  Image.open(StringIO(decoded), "r")
 
+  # --- this is lab ---
+  # try to crop
+  print(img.size)
+  box = (200,360,600,480)
+  img2 = img.corp(box)
+  print(img2.size)
+  # --- END lab ---
+
   """ ValueError: conversion from RGB to BMP not supported """
   # img = img.convert('BMP')
   """ ValueError: conversion from RGB to PNG not supported """
