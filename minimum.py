@@ -18,4 +18,5 @@ def upload_file():
   return resp
 
 if __name__ == "__main__":
+  app.debug = True
   app.run(host=conf.host,port=conf.port)

@@ -13,7 +13,14 @@ def from_binary(binary):
   builder = pyocr.builders.TextBuilder()
 
   decoded = base64.b64decode(binary)
-  img =  Image.open(StringIO(decoded))
+  img =  Image.open(StringIO(decoded), "r")
+
+  """ ValueError: conversion from RGB to BMP not supported """
+  # img = img.convert('BMP')
+  """ ValueError: conversion from RGB to PNG not supported """
+  # img = img.convert('PNG')
+  """ IOError: cannot write mode RGBA as BMP """
+  # img = img.convert()
 
   txt = tool.image_to_string(img,lang=lang,builder=builder)
 

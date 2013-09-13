@@ -39,6 +39,7 @@ class Handler:
 
   def validateData(self,data):
     if re.match('data:image/png;base64,',data) is None:
+    # if re.match('data:image/bmp;base64,',data) is None:
       self.body['message'] = 'Wrong data format. Required "base64 encoded image/png"'
       self.status = 400
       return False
@@ -58,6 +59,7 @@ class Handler:
       return self.finish()
 
     binary  = data.replace('data:image/png;base64,','')
+    # binary  = data.replace('data:image/jpeg;base64,','')
     self.body['result'] = ocr.from_binary(binary)
 
     return self.finish()
