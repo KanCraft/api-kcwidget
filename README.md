@@ -4,6 +4,12 @@ python
 
 # Set Up
 
+### install tesseract-ocr
+https://code.google.com/p/tesseract-ocr/
+```
+sudo apt-get install tesseract-ocr
+```
+
 ### install python 2.6.6 :pensive:
 ```
 sudo apt-get install python2.6
