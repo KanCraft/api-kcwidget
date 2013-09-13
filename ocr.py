@@ -19,7 +19,7 @@ def from_binary(binary):
   # try to crop
   print(img.size)
   box = (200,360,600,480)
-  img2 = img.corp(box)
+  img2 = img.crop(box)
   print(img2.size)
   # --- END lab ---
 
