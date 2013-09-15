@@ -61,5 +61,6 @@ class Handler:
     binary  = data.replace('data:image/png;base64,','')
     # binary  = data.replace('data:image/jpeg;base64,','')
     self.body['result'] = ocr.from_binary(binary)
+    self.body['message'] = 'DONE'
 
     return self.finish()
