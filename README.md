@@ -53,3 +53,39 @@ port = 9999
 ```
 python minimum.py
 ```
+
+## Memo
+
+```
+[19:06:49] % tree /usr/share/tesseract-ocr/tessdata
+/usr/share/tesseract-ocr/tessdata
+|-- configs
+|   |-- api_config
+|   |-- box.train
+|   |-- box.train.stderr
+|   |-- inter
+|   |-- kannada
+|   |-- makebox
+|   `-- unlv
+|-- confsets
+|-- eng.DangAmbigs
+|-- eng.freq-dawg
+|-- eng.inttemp
+|-- eng.normproto
+|-- eng.pffmtable
+|-- eng.traineddata
+|-- eng.unicharset
+|-- eng.user-words
+|-- eng.word-dawg
+|-- jpn.traineddata
+`-- tessconfigs
+    |-- batch
+    |-- batch.nochop
+    |-- matdemo
+    |-- msdemo
+    |-- nobatch
+    `-- segdemo
+
+2 directories, 24 files
+[19:24:38] %
+```
