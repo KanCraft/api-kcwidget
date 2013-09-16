@@ -15,6 +15,7 @@ app = Flask(__name__)
 def upload_file():
   (body, status) = Handler(request).handle()
   resp = make_response(body, status)
+  resp.headers['Content-Type'] = 'application/json'
   return resp
 
 if __name__ == "__main__":
