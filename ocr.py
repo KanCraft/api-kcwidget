@@ -1,5 +1,6 @@
 # --- OCR ---
 from PIL import Image
+from PIL import ImageEnhance
 import pyocr
 import pyocr.builders
 from StringIO import StringIO
@@ -16,11 +17,10 @@ def from_binary(binary):
   img =  Image.open(StringIO(decoded), "r")
 
   # --- this is lab ---
-  # try to crop
-  print(img.size)
-  box = (200,360,600,480)
-  img2 = img.crop(box)
-  print(img2.size)
+  # ENHANCE CONTRAST
+  enhancing = ImageEnhance.Contrast(img)
+  img2 = enhancing.enhance(3)
+  img = img2
   # --- END lab ---
 
   """ ValueError: conversion from RGB to BMP not supported """
