@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import request
 from flask import make_response
+import sys
 
 # --- my modules
 import conf
@@ -19,5 +20,6 @@ def upload_file():
   return resp
 
 if __name__ == "__main__":
-  app.debug = True
+  if len(sys.argv) > 1 and sys.argv[1] == 'debug':
+    app.debug = True
   app.run(host=conf.host,port=conf.port)

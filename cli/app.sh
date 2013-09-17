@@ -18,7 +18,11 @@ log_path='log/'$cur_date'.log'
 
 case $1 in
   "start" )
-    nohup python $PWD/minimum.py >> $log_path &
+    if [ $# -gt 1 ]; then
+      python $PWD/minimum.py debug
+    else
+      nohup python $PWD/minimum.py >> $log_path &
+    fi
     sleep 1s
     break;;
   "stop" )
