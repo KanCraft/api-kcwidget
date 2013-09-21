@@ -22,7 +22,4 @@ def upload_file():
 if __name__ == "__main__":
   if len(sys.argv) > 1 and sys.argv[1] == 'debug':
     app.debug = True
-  if len(sys.argv) > 2 and sys.argv[2] == 'conf':
-    app.run(host=conf.host,port=conf.port)
-  else:
-    app.run(port=conf.port)
+  app.run(host=conf.host,port=conf.port)
