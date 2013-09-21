@@ -18,8 +18,8 @@ log_path='log/'$cur_date'.log'
 
 case $1 in
   "start" )
-    if [ $# -gt 1 ]; then
-      python $PWD/minimum.py debug
+    if [ "$2" = "debug" ]; then
+      python $PWD/minimum.py debug conf
     else
       nohup python $PWD/minimum.py >> $log_path &
     fi
