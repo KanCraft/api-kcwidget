@@ -21,7 +21,8 @@ case $1 in
     if [ "$2" = "debug" ]; then
       python $PWD/minimum.py debug conf
     else
-      nohup python $PWD/minimum.py >> $log_path &
+      # nohup python $PWD/minimum.py >> $log_path &
+      nohup python $PWD/minimum.py >> /dev/null &
     fi
     sleep 1s
     break;;
