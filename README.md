@@ -3,89 +3,47 @@
 python
 
 # Set Up
+https://gist.github.com/otiai10/6619523
+```sh
+#
+# usage:
+#    sh setup_server.sh
+#
 
-### install tesseract-ocr
-https://code.google.com/p/tesseract-ocr/
-```
-sudo apt-get install tesseract-ocr
-```
+## START
 
-### install python 2.6.6 :pensive:
-```
-sudo apt-get install python2.6
-```
+# cat /etc/debian_version
+#=> 6.0.7
+# apt-cache search tesseract-ocr
+#=> tesseract-ocr - Command line OCR tool
+sudo apt-get update
+sudo apt-get install -y tesseract-ocr
+sudo apt-get install -y gcc
+sudo apt-get install -y python-dev
+sudo apt-get install -y python-imaging
+sudo apt-get install -y git
 
-### OPTIONAL : install pyenv
-http://qiita.com/la_luna_azul/items/3f64016feaad1722805c
-```
-cd ~
-git clone git://github.com/yyuu/pyenv.git .pyenv
 
-echo 'export PYENV_ROOT="${HOME}/.pyenv"' >> ~/.bashrc
-echo 'if [ -d "${PYENV_ROOT}" ]; then' >> ~/.bashrc
-echo '    export PATH=${PYENV_ROOT}/bin:$PATH' >> ~/.bashrc
-echo '    eval "$(pyenv init -)"' >> ~/.bashrc
-echo 'fi' >> ~/.bashrc
+# python --version
+#=> Python 2.6.6
+wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
+sudo /usr/local/bin/easy_install pip
+# pip search Flask
+#=> Flask - A microframework based on Werkzeug, Jinja2 and good intentions 0.10.0
+sudo pip install Flask
+sudo pip install pyocr
 
-exec $SHELL -l
+rm -f .ssh/config
+echo "Host *" >> .ssh/config
+echo "        StrictHostKeyChecking no" >> .ssh/config
 
-cd $PYENV_ROOT/plugins
-git clone git://github.com/yyuu/pyenv-virtualenv.git
-```
-### install pip
-```
-sudo easy_install pip
-```
-### install pyocr
-```
-pip install pyocr
-```
-### install Flask
-```
-pip install Flask
-```
-### prepare conf.py
-```python
-host = 'myhost.com'
-port = 9999
-```
-### Start Server
-```
-python minimum.py
-```
+rm -rf ocrServer
+git clone git@github.com:otiai10/ocrServer.git
+cd ocrServer
+echo "host = 'kcwidgetocrserver001'" >> conf.py
+echo "port = 5000" >> conf.py
+# sh cli/app.sh start debug
+sh cli/app.sh start
 
-## Memo
-
-```
-[19:06:49] % tree /usr/share/tesseract-ocr/tessdata
-/usr/share/tesseract-ocr/tessdata
-|-- configs
-|   |-- api_config
-|   |-- box.train
-|   |-- box.train.stderr
-|   |-- inter
-|   |-- kannada
-|   |-- makebox
-|   `-- unlv
-|-- confsets
-|-- eng.DangAmbigs
-|-- eng.freq-dawg
-|-- eng.inttemp
-|-- eng.normproto
-|-- eng.pffmtable
-|-- eng.traineddata
-|-- eng.unicharset
-|-- eng.user-words
-|-- eng.word-dawg
-|-- jpn.traineddata
-`-- tessconfigs
-    |-- batch
-    |-- batch.nochop
-    |-- matdemo
-    |-- msdemo
-    |-- nobatch
-    `-- segdemo
-
-2 directories, 24 files
-[19:24:38] %
+## END
 ```
