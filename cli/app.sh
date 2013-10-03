@@ -33,6 +33,12 @@ case $1 in
   "state" )
     ps aux | grep python | grep $PWD/minimum.py | grep -v grep
     break;;
+  "restart" )
+    ps aux | grep python | grep $PWD/minimum.py | grep -v grep | awk '{print $2}' | xargs kill -9
+    sleep 1s
+    nohup python $PWD/minimum.py >> /dev/null &
+    sleep 1s
+    break;;
   "help" )
     echo "\033[0;33m"
     print_help
