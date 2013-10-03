@@ -9,7 +9,7 @@ clidir=$(cd $(dirname $0); pwd)
 . $clidir/conf
 
 # get server response time
-cmd="curl -kL ${SERVER_URL} --output /dev/null --write-out %{time_total}"
+cmd="curl -kL ${SERVER_URL} --max-time 20 --output /dev/null --write-out %{time_total}"
 server_response=`${cmd}`
 
 # evaluate
