@@ -20,6 +20,13 @@ case $1 in
   "start" )
     if [ "$2" = "debug" ]; then
       python $PWD/minimum.py debug conf
+    elif [ "$2" = "multi" ]; then
+      for i in 1 2 3 4 5; do
+        port=`expr 15000 + $i`
+        echo $port
+        nohup python $PWD/minimum.py port=$port > /dev/null &
+        sleep 1s
+      done
     else
       # nohup python $PWD/minimum.py >> $log_path &
       nohup python $PWD/minimum.py >> /dev/null &
