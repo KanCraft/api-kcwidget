@@ -234,7 +234,8 @@ class TextBuilder(object):
     """
 
     file_extension = "txt"
-    tesseract_configs = []
+    # tesseract_configs = []
+    tesseract_configs = ["digest.txt"] # especially for ocrServer
     cuneiform_args = ["-f", "text"]
 
     def __init__(self):

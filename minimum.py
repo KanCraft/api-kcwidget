@@ -30,3 +30,4 @@ if __name__ == "__main__":
     app.run(host=conf.host,port=int(port))
   else:
     app.run(host=conf.host,port=conf.port)
+    #app.run(host=conf.host,port=conf.port,debug=True)

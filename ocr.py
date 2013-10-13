@@ -1,8 +1,8 @@
 # --- OCR ---
 from PIL import Image
 from PIL import ImageEnhance
-import lib.pyocr
-import lib.pyocr.builders
+from lib import pyocr
+from lib.pyocr import builders
 from StringIO import StringIO
 import base64
 
