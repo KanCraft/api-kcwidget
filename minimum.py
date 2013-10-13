@@ -20,9 +20,8 @@ def upload_file():
   return resp
 
 if __name__ == "__main__":
-  print sys.argv[1]
+  k, port = ('','')
   if len(sys.argv) > 1:
-    k, port = ('','')
     if re.search('=', sys.argv[1]):
       k, port = sys.argv[1].split('=')
     if sys.argv[1] == 'debug':
