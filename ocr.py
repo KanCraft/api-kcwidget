@@ -19,7 +19,7 @@ def from_binary(binary):
   # --- this is lab ---
   # ENHANCE CONTRAST
   enhancing = ImageEnhance.Contrast(img)
-  img2 = enhancing.enhance(3)
+  img2 = enhancing.enhance(1.5)
   img = img2
   # --- END lab ---
 
