@@ -47,3 +47,11 @@ sh cli/app.sh start
 
 ## END
 ```
+# Run test
+```sh
+python ./tdriver.py
+```
+or test spefic base64
+```sh
+python ./tdriver.py --file ./sample/b64sample001.txt
+```
