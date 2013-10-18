@@ -24,7 +24,7 @@ def from_binary(binary, debug=False):
   # ENHANCE CONTRAST
   enhancing = ImageEnhance.Contrast(img)
   img2 = enhancing.enhance(1.5)
-  img = img2
+  #img = img2
 
   """ ValueError: conversion from RGB to BMP not supported """
   # img = img.convert('BMP')
@@ -33,7 +33,8 @@ def from_binary(binary, debug=False):
   """ IOError: cannot write mode RGBA as BMP """
   # img = img.convert()
 
-  txt = tool.image_to_string(img,lang=lang,builder=builder)
+  #txt = tool.image_to_string(img,lang=lang,builder=builder)
+  txt = tool.image_to_string(img2,lang=lang,builder=builder)
 
   # TODO: formatting should be by application
   if txt == "":
