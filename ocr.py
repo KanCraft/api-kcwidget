@@ -21,15 +21,10 @@ def from_binary(binary, debug=False):
   decoded = base64.b64decode(binary)
   img =  Image.open(StringIO(decoded), "r")
 
-  # --- this is lab ---
   # ENHANCE CONTRAST
-  if debug:
-    print(img.size)
-
   enhancing = ImageEnhance.Contrast(img)
   img2 = enhancing.enhance(1.5)
   img = img2
-  # --- END lab ---
 
   """ ValueError: conversion from RGB to BMP not supported """
   # img = img.convert('BMP')
@@ -39,5 +34,11 @@ def from_binary(binary, debug=False):
   # img = img.convert()
 
   txt = tool.image_to_string(img,lang=lang,builder=builder)
+
+  # TODO: formatting should be by application
+  if txt == "":
+    enhancing = ImageEnhance.Sharpness(img)
+    img = enhancing.enhance(1/4)
+    txt = tool.image_to_string(img,lang=lang,builder=builder)
 
   return txt
