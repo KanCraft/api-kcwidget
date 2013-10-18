@@ -47,7 +47,7 @@ sh cli/app.sh start
 
 ## END
 ```
-# Run test
+# Run Test
 ```sh
 python ./tdriver.py
 ```
