@@ -6,7 +6,12 @@ from lib.pyocr import builders
 from StringIO import StringIO
 import base64
 
-def from_binary(binary):
+def from_binary(binary, debug=False):
+  if debug:
+    print("=========== RAW URI =============")
+    print(binary)
+    print("========= END ========")
+
   # settings
   tools = pyocr.get_available_tools()
   tool = tools[0]
@@ -18,6 +23,9 @@ def from_binary(binary):
 
   # --- this is lab ---
   # ENHANCE CONTRAST
+  if debug:
+    print(img.size)
+
   enhancing = ImageEnhance.Contrast(img)
   img2 = enhancing.enhance(1.5)
   img = img2
