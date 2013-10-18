@@ -32,7 +32,7 @@ def from_binary(binary, debug=False):
 
   # ENHANCE CONTRAST
   enhancing = ImageEnhance.Contrast(img)
-  img2 = enhancing.enhance(32)
+  img2 = enhancing.enhance(128)
   #img = img2
   txt = tool.image_to_string(img2,lang=lang,builder=builder)
   if debug:
@@ -41,7 +41,7 @@ def from_binary(binary, debug=False):
     return txt
 
   # TODO: formatting should be by application
-  enhancing = ImageEnhance.Sharpness(img)
+  enhancing = ImageEnhance.Sharpness(img2)
   img3 = enhancing.enhance(1/16)
   txt = tool.image_to_string(img3,lang=lang,builder=builder)
   if debug:
