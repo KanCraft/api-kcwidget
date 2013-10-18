@@ -11,8 +11,7 @@ def main():
   file_path = get_fpath()
   b64str = open(file_path,'r').read()
   txt = ocr.from_binary(b64str, debug=True)
-  print("THIS IS RESULT : ")
-  print(txt)
+  print("THIS IS RESULT  : " + txt)
 
 if __name__ == '__main__':
   main()

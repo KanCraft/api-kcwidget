@@ -21,25 +21,25 @@ def from_binary(binary, debug=False):
   decoded = base64.b64decode(binary)
   img =  Image.open(StringIO(decoded), "r")
 
-  # ENHANCE CONTRAST
-  enhancing = ImageEnhance.Contrast(img)
-  img2 = enhancing.enhance(1.5)
-  #img = img2
+  txt = tool.image_to_string(img,lang=lang,builder=builder)
+  if debug:
+    print("RawImage\t: " + txt)
 
-  """ ValueError: conversion from RGB to BMP not supported """
-  # img = img.convert('BMP')
-  """ ValueError: conversion from RGB to PNG not supported """
-  # img = img.convert('PNG')
-  """ IOError: cannot write mode RGBA as BMP """
-  # img = img.convert()
-
-  #txt = tool.image_to_string(img,lang=lang,builder=builder)
-  txt = tool.image_to_string(img2,lang=lang,builder=builder)
+  if txt == "":
+    # ENHANCE CONTRAST
+    enhancing = ImageEnhance.Contrast(img)
+    img2 = enhancing.enhance(3)
+    #img = img2
+    txt = tool.image_to_string(img2,lang=lang,builder=builder)
+    if debug:
+      print("Contrast\t: " + txt)
 
   # TODO: formatting should be by application
   if txt == "":
     enhancing = ImageEnhance.Sharpness(img)
-    img = enhancing.enhance(1/4)
-    txt = tool.image_to_string(img,lang=lang,builder=builder)
+    img3 = enhancing.enhance(1/4)
+    txt = tool.image_to_string(img3,lang=lang,builder=builder)
+    if debug:
+      print("Sharpness\t: " + txt)
 
   return txt
