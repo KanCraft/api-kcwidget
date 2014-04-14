@@ -2,9 +2,9 @@
 
 print_help()
 {
-  echo "\tstart\t起動"
-  echo "\tstop\t終了"
-  echo "\tstate\t状態確認"
+  echo "\tstart [debug|multi]"
+  echo "\tstop"
+  echo "\tstate"
   exit 0
 }
 
