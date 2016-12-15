@@ -1,1 +1,1 @@
-web: ocrserver
+web: ocr-kcwidget
