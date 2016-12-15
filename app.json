@@ -1,11 +1,11 @@
 {
-  "name": "OCR Server on Heroku",
-  "description": "Simple OCR Server by Golang on Heroku",
+  "name": "OCR Server for KanColleWidget",
+  "description": "艦これをちょっと遊びやすくする『艦これウィジェット』の時間取得OCRサーバです",
   "keywords": [],
   "image": "heroku/go:1.6",
-  "mount_dir": "src/github.com/otiai10/ocrserver",
-  "website": "http://github.com/otiai10/ocrserver",
-  "repository": "http://github.com/otiai10/ocrserver",
+  "mount_dir": "src/github.com/otiai10/ocr-kcwidget",
+  "website": "http://github.com/otiai10/ocr-kcwidget",
+  "repository": "http://github.com/otiai10/ocr-kcwidget",
   "buildpacks": [
       {
           "url": "https://github.com/heroku/heroku-buildpack-apt.git"
