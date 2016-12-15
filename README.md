@@ -3,18 +3,16 @@
 - [ocrserver](https://github.com/otiai10/ocrserver)
 - [KanColleWidget](https://github.com/otiai10/kanColleWidget)
 
-くわしくは[ocrserver](https://github.com/otiai10/ocrserver)のREADMEを見てください
-
 # Getting Started
 
-ローカル開発
+#### ローカル開発
 
 ```sh
 go run main.go
 ```
 
-Herokuへデプロイ
+### Heroku
 
-```sh
-git remote -v && git push heroku master
-```
+新規インスタンス作成 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+既存インスタンス更新 `git remote -v && git push heroku master`
