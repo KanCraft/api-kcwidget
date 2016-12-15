@@ -1,5 +1,0 @@
-conf.py
-*.pyc
-log/*
-!*.gitkeep
-cli/conf
