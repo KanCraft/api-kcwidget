@@ -1,11 +1,11 @@
 {
-  "name": "OCR Server for KanColleWidget",
-  "description": "艦これをちょっと遊びやすくする『艦これウィジェット』の時間取得OCRサーバです",
+  "name": "API Server for KanColleWidget",
+  "description": "艦これをちょっと遊びやすくする『艦これウィジェット』のAPIサーバです",
   "keywords": [],
   "image": "heroku/go:1.6",
-  "mount_dir": "src/github.com/otiai10/ocr-kcwidget",
-  "website": "http://github.com/otiai10/ocr-kcwidget",
-  "repository": "http://github.com/otiai10/ocr-kcwidget",
+  "mount_dir": "src/github.com/otiai10/api-kcwidget",
+  "website": "http://github.com/otiai10/api-kcwidget",
+  "repository": "http://github.com/otiai10/api-kcwidget",
   "buildpacks": [
       {
           "url": "https://github.com/heroku/heroku-buildpack-apt.git"

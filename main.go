@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,10 +11,11 @@ import (
 
 	"github.com/otiai10/ocrserver/config"
 	"github.com/otiai10/ocrserver/controllers"
-	"github.com/otiai10/ocrserver/filters"
 )
 
 var logger *log.Logger
+
+const version = "0.2.0"
 
 func main() {
 
@@ -22,22 +24,22 @@ func main() {
 	r := marmoset.NewRouter()
 
 	// API
-	r.GET("/status", controllers.Status)
+	r.GET("/status", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"message": "OK!",
+			"version": version,
+		})
+	})
 	r.POST("/base64", controllers.Base64)
 	r.POST("/file", controllers.FileUpload)
 
-	r.Static("/assets", "./assets")
-
-	// Sample Page
-	r.GET("/", controllers.Index)
-
-	chain := marmoset.NewFilter(r)
-	if os.Getenv("OCRSERVER_LOG_ENABLED") == "1" {
-		chain.Add(&filters.LogFilter{Logger: logger})
-	}
-	server := chain.Server()
+	// Pages (You ain't gonna need it)
+	// r.Static("/assets", "./assets")
+	// r.GET("/", Index)
 
 	logger.Printf("listening on port %s", config.Port())
-	err := http.ListenAndServe(config.Port(), server)
+	err := http.ListenAndServe(config.Port(), r)
 	logger.Println(err)
 }
