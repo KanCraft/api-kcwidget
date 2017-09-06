@@ -1,45 +1,58 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"runtime"
+	"time"
 
 	"github.com/otiai10/marmoset"
 
-	"github.com/otiai10/ocrserver/config"
-	"github.com/otiai10/ocrserver/controllers"
+	ocrserver "github.com/otiai10/ocrserver/controllers"
+	webm2mp4 "github.com/otiai10/webm2mp4/controllers"
 )
-
-var logger *log.Logger
 
 const version = "0.2.0"
 
 func main() {
 
-	logger = log.New(os.Stdout, fmt.Sprintf("[%s] ", config.AppName()), 0)
+	logger := log.New(os.Stdout, fmt.Sprintf("[%s] ", "api-kcwidget"), 0)
+
+	marmoset.LoadViews("./app/views")
 
 	r := marmoset.NewRouter()
 
 	// API
-	r.GET("/status", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]interface{}{
-			"message": "OK!",
-			"version": version,
-		})
-	})
-	r.POST("/base64", controllers.Base64)
-	r.POST("/file", controllers.FileUpload)
+	r.GET("/status", status)
+	r.POST("/base64", ocrserver.Base64)
+	r.POST("/file", ocrserver.FileUpload)
+	r.POST("/video/convert", webm2mp4.Convert)
 
 	// Pages (You ain't gonna need it)
-	// r.Static("/assets", "./assets")
-	// r.GET("/", Index)
+	r.Static("/assets", "./app/assets")
+	r.GET("/", index)
 
-	logger.Printf("listening on port %s", config.Port())
-	err := http.ListenAndServe(config.Port(), r)
+	port := os.Getenv("PORT")
+	logger.Printf("listening on port %s", port)
+	err := http.ListenAndServe(":"+port, r)
 	logger.Println(err)
+}
+
+func status(w http.ResponseWriter, r *http.Request) {
+	render := marmoset.Render(w, true)
+	render.JSON(http.StatusOK, marmoset.P{"message": "OK!", "version": version})
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
+	render := marmoset.Render(w)
+
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	render.HTML("index", marmoset.P{
+		"version":   version,
+		"memory":    m,
+		"timestamp": time.Now().Unix(),
+	})
 }

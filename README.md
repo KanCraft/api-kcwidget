@@ -1,18 +1,20 @@
-# OCRServer for KanColleWidget
+# api-kcwidget
 
-- [ocrserver](https://github.com/otiai10/ocrserver)
-- [KanColleWidget](https://github.com/otiai10/kanColleWidget)
+[艦これウィジェット](https://github.com/otiai10/kanColleWidget)のAPIサーバです。Dockerが使える環境で開発・デプロイができます。
 
-# Getting Started
+公開版『艦これウィジェット』が利用している公式のAPIインスタンスは[api-kcwidget.herokuapp.com](https://api-kcwidget.herokuapp.com)ですが、イベント中など混雑時にはOOMが発生することがあります。そういう場合には、独自のインスタンスを立ててもらって、そこに向けるのがよいかと思います。
 
-#### ローカル開発
+# ローカル開発
 
 ```sh
-go run main.go
+% docker-compose up -d
+% open http://localhost:8080
 ```
 
-### Heroku
+# 新規デプロイ
 
-新規インスタンス作成 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-既存インスタンス更新 `git remote -v && git push heroku master`
+```sh
+% heroku create
+% heroku container:push web
+% heroku open
+```

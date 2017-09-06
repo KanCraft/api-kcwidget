@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Milligram <https://github.com/milligram/milligram> -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css" />
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css" />
+  <link rel="stylesheet" href="https://milligram.github.io/styles/main.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" href="/assets/index.css" />
+
+</head>
+<body>
+  <main class="wrapper">
+    <nav class="navigation">
+      <section class="container">
+        <a class="navigation-title" href="/">
+          <h1 class="title">api-kcwidget</h1>
+        </a>
+        <ul class="navigation-list float-right">
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://github.com/otiai10/api-kcwidget"><span>version {{.version}}</span> <i class="fa fa-github"></i></a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+
+    <section class="container" id="form-ocr">
+      <h2 class="title">OCR playground</h2>
+      <fieldset>
+        <label for="ocr-file">Image file</label>
+        <input id="ocr-file" type="file" accept="image/*" />
+        <button class="button">SUBMT</button>
+      </fieldset>
+      <div>
+        <pre><code></code></pre>
+      <div>
+    </section>
+
+    <section class="container" id="form-avconv">
+      <h2 class="title">Video convert playground</h2>
+      <fieldset>
+        <label for="video-file">Video file</label>
+        <input id="video-file" type="file" accept="video" />
+        <button class="button">SUBMT</button>
+      </fieldset>
+      <div>
+        <pre><code></code></pre>
+      <div>
+    </section>
+
+    <section class="container">
+      <h2 class="title">Memory Stats</h2>
+      <table>
+        <tbody>
+          <tr><th>TotalAlloc</th><td>{{.memory.TotalAlloc}}</td></tr>
+      </table>
+    </section>
+
+  </main>
+
+  <script type="text/javascript" src="/assets/index.js"></script>
+
+</body>
+</html>
