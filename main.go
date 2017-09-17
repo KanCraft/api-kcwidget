@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -18,7 +17,7 @@ const version = "0.3.0"
 
 func main() {
 
-	logger := log.New(os.Stdout, fmt.Sprintf("[%s] ", "api-kcwidget"), 0)
+	logger := log.New(os.Stdout, "", log.Ltime)
 
 	marmoset.LoadViews("./app/views")
 
