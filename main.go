@@ -34,6 +34,10 @@ func main() {
 	r.Static("/assets", "./app/assets")
 	r.GET("/", index)
 
+	if os.Getenv("LOG_ENABLED") != "" {
+		r.Apply(NewLogFilter(logger))
+	}
+
 	port := os.Getenv("PORT")
 	logger.Printf("listening on port %s", port)
 	err := http.ListenAndServe(":"+port, r)
