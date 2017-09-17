@@ -1,8 +1,7 @@
 version: '3'
 services:
-  dev:
+  api:
     build: .
-    container_name: dev
     environment:
       PORT: 8080
       LOG_ENABLED: 1
