@@ -23,10 +23,12 @@ func main() {
 
 	r := marmoset.NewRouter()
 
-	// API
+	// General
 	r.GET("/status", status)
-	r.POST("/base64", ocrserver.Base64)
-	r.POST("/file", ocrserver.FileUpload)
+	// OCR
+	r.POST("/ocr/base64", ocrserver.Base64)
+	r.POST("/ocr/file", ocrserver.FileUpload)
+	// WebM to MP4
 	r.POST("/video/convert", webm2mp4.Convert)
 
 	// Pages (You ain't gonna need it)
