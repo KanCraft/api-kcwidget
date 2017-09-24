@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/otiai10/api-kcwidget/filters"
 	"github.com/otiai10/marmoset"
 
 	ocrserver "github.com/otiai10/ocrserver/controllers"
@@ -36,10 +37,13 @@ func main() {
 	r.GET("/", index)
 
 	if os.Getenv("LOG_ENABLED") != "" {
-		r.Apply(NewLogFilter(logger))
+		r.Apply(filters.NewLogFilter(logger))
 	}
 
 	port := os.Getenv("PORT")
+	if port == "" {
+		panic("PORT must be specified.")
+	}
 	logger.Printf("listening on port %s", port)
 	err := http.ListenAndServe(":"+port, r)
 	logger.Println(err)
