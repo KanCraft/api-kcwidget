@@ -22,3 +22,13 @@
 % heroku create
 % heroku container:push web
 ```
+
+# 依存パッケージの解決
+
+基本的には最新のバージョンを追従していきますが、一応 `dep` を置いときます。
+
+```
+% dep ensure
+% go install .
+% PORT=8080 api-kcwidget
+```
