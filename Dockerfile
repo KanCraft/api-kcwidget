@@ -1,6 +1,6 @@
-FROM golang:1.8
+FROM golang:1.18
 
-MAINTAINER otiai10 <otiai10@gmail.com>
+LABEL maintainer=otiai10<otiai10@gmail.com>
 
 RUN apt-get -qq update
 
@@ -11,11 +11,12 @@ RUN apt-get install -y \
   tesseract-ocr
 
 # For AVCodec
-RUN apt-get install -y \
-  libav-tools
+# RUN apt-get install -y \
+#   libav-tools
 
 ADD . $GOPATH/src/github.com/otiai10/api-kcwidget
 WORKDIR $GOPATH/src/github.com/otiai10/api-kcwidget
-RUN go get ./...
+RUN go install .
 
-CMD api-kcwidget
+CMD ["/go/bin/api-kcwidget"]
+# CMD [api-kcwidget]

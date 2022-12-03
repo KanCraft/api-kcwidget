@@ -1,0 +1,10 @@
+github.com/otiai10/gosseract v2.2.0+incompatible h1:r2Icyba/doznLy0MgsDMWJADETgJNjlX78x/BBbhCUY=
+github.com/otiai10/gosseract v2.2.0+incompatible/go.mod h1:XrzWItCzCpFRZ35n3YtVTgq5bLAhFIkascoRo8G32QE=
+github.com/otiai10/marmoset v0.0.0-20170610215412-af97a62a5375 h1:H8lKrj44EyKipzNBBSnEPRBYwmyQGMWzSrEXq/wnynA=
+github.com/otiai10/marmoset v0.0.0-20170610215412-af97a62a5375/go.mod h1:t2q6dXWZ9YcFdRREDApX4bCmfQnL3isJ2dgl8ychlXg=
+github.com/otiai10/mint v1.4.0 h1:umwcf7gbpEwf7WFzqmWwSv0CzbeMsae2u9ZvpP8j2q4=
+github.com/otiai10/mint v1.4.0/go.mod h1:gifjb2MYOoULtKLqUAEILUG/9KONW6f7YsJ6vQLTlFI=
+github.com/otiai10/ocrserver v0.0.0-20180215202816-7d8491ff927a h1:GpwYiu4bw9//kmoZxjOxT1hBlot+0pqmnU+zzLR3cAE=
+github.com/otiai10/ocrserver v0.0.0-20180215202816-7d8491ff927a/go.mod h1:gtpwzZ20cEY68SuqMhDFI+4W0DmGPWQ9LFWZkSZzAss=
+golang.org/x/net v0.0.0-20180611182652-db08ff08e862 h1:JZi6BqOZ+iSgmLWe6llhGrNnEnK+YB/MRkStwnEfbqM=
+golang.org/x/net v0.0.0-20180611182652-db08ff08e862/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=

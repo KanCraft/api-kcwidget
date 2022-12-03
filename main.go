@@ -7,11 +7,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/otiai10/api-kcwidget/filters"
 	"github.com/otiai10/marmoset"
 
 	ocrserver "github.com/otiai10/ocrserver/controllers"
-	webm2mp4 "github.com/otiai10/webm2mp4/controllers"
 )
 
 const version = "0.4.1"
@@ -29,16 +27,17 @@ func main() {
 	// OCR
 	r.POST("/ocr/base64", ocrserver.Base64)
 	r.POST("/ocr/file", ocrserver.FileUpload)
+
 	// WebM to MP4
-	r.POST("/video/convert", webm2mp4.Convert)
+	// r.POST("/video/convert", webm2mp4.Convert)
 
 	// Pages (You ain't gonna need it)
 	r.Static("/assets", "./app/assets")
 	r.GET("/", index)
 
-	if os.Getenv("LOG_ENABLED") != "" {
-		r.Apply(filters.NewLogFilter(logger))
-	}
+	// if os.Getenv("LOG_ENABLED") != "" {
+	// 	r.Apply(filters.NewLogFilter(logger))
+	// }
 
 	port := os.Getenv("PORT")
 	if port == "" {

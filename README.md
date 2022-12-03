@@ -7,14 +7,15 @@
 # dockerを使ったローカルインスタンス作成
 
 ```sh
-% docker run -e "PORT=8080" -it --rm otiai10/api-kcwidget
+% docker build . -t otiai10/api-kcwidget
+% docker run -e "PORT=8080" -p=8080:8080 -it --rm otiai10/api-kcwidget
 ```
 
-# docker-composeを使ったインスタンス作成
+<!-- # docker-composeを使ったインスタンス作成
 
 ```sh
 % docker-compose up -d
-```
+``` -->
 
 # Herokuへのインスタンス作成
 
